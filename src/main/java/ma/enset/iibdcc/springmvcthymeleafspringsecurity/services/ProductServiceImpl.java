@@ -21,4 +21,20 @@ public class ProductServiceImpl implements ProductService {
     public void saveProduct(Product product) {
         productRepository.save(product);
     }
+
+    @Override
+    public void deleteProductById(int productId) {
+        productRepository.deleteById(productId);
+    }
+
+    @Override
+    public List<Product> searchProducts(String keyword) {
+        return productRepository.findByNameContainingIgnoreCase(keyword);
+    }
+
+    @Override
+    public Product getProductById(int id) {
+        return productRepository.findById(id);
+    }
+
 }
